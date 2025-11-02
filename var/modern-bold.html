@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willow Spence | Modern Bold</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Arial Black',sans-serif;color:#fff;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);line-height:1.6}
+header{background:#000;padding:1.5rem 0}
+.logo-container{max-width:160px;margin:0 auto}
+.logo-container img{width:100%;display:block}
+.hero{padding:4rem 2rem;text-align:center;background:rgba(0,0,0,0.3)}
+.hero h1{font-size:3.5rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:5px}
+.hero .tagline{font-size:1.3rem;margin-bottom:2rem;color:#ffd700}
+.hero .specs{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin:2rem 0}
+.spec-item .number{font-size:4rem;font-weight:900}
+.spec-item .label{font-size:0.7rem;text-transform:uppercase;letter-spacing:2px}
+.explore-btn{background:#ffd700;color:#000;padding:1.2rem 3rem;font-size:1rem;border:none;border-radius:0;text-transform:uppercase;letter-spacing:3px;font-weight:900;cursor:pointer;transition:0.3s}
+.explore-btn:hover{background:#fff;transform:scale(1.05)}
+.description{padding:4rem 2rem;background:#000}
+.description h2{font-size:2.5rem;margin-bottom:2rem;text-align:center;text-transform:uppercase}
+.description-content{max-width:900px;margin:0 auto;font-size:1.1rem}
+.description-content p{margin-bottom:1.5rem}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin:3rem 0}
+.feature-card{background:linear-gradient(135deg,#667eea,#764ba2);padding:2.5rem;text-align:center;border:3px solid #ffd700;transition:0.3s}
+.feature-card:hover{transform:scale(1.05);box-shadow:0 0 30px #ffd700}
+.feature-card .icon{font-size:3rem;margin-bottom:1rem}
+.feature-card h3{font-size:1.3rem;margin-bottom:0.8rem;text-transform:uppercase}
+.gallery-section{padding:4rem 2rem;background:#000}
+.gallery-section h2{font-size:2.5rem;margin-bottom:3rem;text-align:center;text-transform:uppercase}
+.gallery-carousel{position:relative;max-width:1200px;margin:0 auto;border:5px solid #ffd700}
+.carousel-container{display:flex;transition:transform 0.5s}
+.carousel-slide{min-width:100%;height:70vh;display:flex;align-items:center;justify-content:center;background:#000}
+.carousel-slide img{width:100%;height:100%;object-fit:contain}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:#ffd700;border:none;color:#000;font-size:2rem;width:60px;height:60px;cursor:pointer;z-index:10;font-weight:900}
+.carousel-btn:hover{background:#fff}
+.carousel-btn.prev{left:0}
+.carousel-btn.next{right:0}
+.carousel-counter{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);background:#ffd700;color:#000;padding:0.5rem 1.5rem;font-weight:900;z-index:10}
+.thumbnail-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:5px;margin-top:2rem;background:#ffd700;padding:5px}
+.thumbnail{aspect-ratio:1;overflow:hidden;cursor:pointer;transition:0.2s}
+.thumbnail:hover{transform:scale(1.1)}
+.thumbnail img{width:100%;height:100%;object-fit:cover}
+.thumbnail.active{border:5px solid #ffd700}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:10000}
+.lightbox.active{display:flex;align-items:center;justify-content:center}
+.lightbox-content{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:90vw;height:90vh;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.lightbox-image{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lightbox-close{position:fixed;top:2rem;right:2rem;background:#ffd700;border:none;color:#000;font-size:2rem;width:50px;height:50px;cursor:pointer;z-index:10001;pointer-events:auto;font-weight:900}
+.lightbox-btn{position:fixed;top:50%;transform:translateY(-50%);background:#ffd700;border:none;color:#000;font-size:2rem;width:50px;height:50px;cursor:pointer;z-index:10001;pointer-events:auto;font-weight:900}
+.lightbox-btn.prev{left:2rem}
+.lightbox-btn.next{right:2rem}
+.lightbox-counter{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#ffd700;color:#000;padding:0.8rem 2rem;z-index:10001;pointer-events:none;font-weight:900}
+.cta-section{padding:4rem 2rem;background:linear-gradient(135deg,#667eea,#764ba2);text-align:center}
+.cta-section h2{font-size:2.5rem;margin-bottom:1rem;text-transform:uppercase}
+.cta-btn{background:#ffd700;color:#000;padding:1.2rem 4rem;font-size:1rem;text-decoration:none;text-transform:uppercase;letter-spacing:3px;font-weight:900}
+footer{background:#000;padding:2rem;text-align:center;color:#666}
+footer a{color:#ffd700;text-decoration:none}
+@media (max-width:768px){.hero h1{font-size:2rem}.carousel-slide{height:50vh}.thumbnail-gallery{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+<header><div class="logo-container"><img src="../logo.jpg" alt="Logo"></div></header>
+<section class="hero">
+<h1>WILLOW SPENCE</h1>
+<p class="tagline">BOLD • VIBRANT • UNFORGETTABLE</p>
+<div class="specs">
+<div class="spec-item"><div class="number">16</div><div class="label">BEDS</div></div>
+<div class="spec-item"><div class="number">32+</div><div class="label">GUESTS</div></div>
+<div class="spec-item"><div class="number">6.5K</div><div class="label">SQ FT</div></div>
+</div>
+<button class="explore-btn" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">SEE IT NOW</button>
+</section>
+<section class="description">
+<div style="max-width:900px;margin:0 auto">
+<h2>THE EXPERIENCE</h2>
+<p style="font-size:1.1rem;line-height:1.8">A bold architectural statement in Austin's East Side. This property doesn't whisper—it shouts luxury, style, and unforgettable experiences.</p>
+<div class="features">
+<div class="feature-card"><div class="icon">💎</div><h3>PREMIUM</h3><p>Luxury finishes</p></div>
+<div class="feature-card"><div class="icon">🎯</div><h3>CENTRAL</h3><p>Prime location</p></div>
+<div class="feature-card"><div class="icon">⚡</div><h3>MODERN</h3><p>Contemporary design</p></div>
+<div class="feature-card"><div class="icon">🌟</div><h3>UNIQUE</h3><p>One of a kind</p></div>
+<div class="feature-card"><div class="icon">🎉</div><h3>PARTY</h3><p>Event spaces</p></div>
+<div class="feature-card"><div class="icon">🏆</div><h3>ELITE</h3><p>VIP treatment</p></div>
+</div>
+</div>
+</section>
+<section class="gallery-section" id="gallery">
+<h2>THE VISUALS</h2>
+<div class="gallery-carousel">
+<button class="carousel-btn prev" onclick="changeSlide(-1);return false">‹</button>
+<button class="carousel-btn next" onclick="changeSlide(1);return false">›</button>
+<div class="carousel-container" id="carouselContainer"></div>
+<div class="carousel-counter"><span id="currentSlide">1</span>/<span id="totalSlides">62</span></div>
+</div>
+<div style="max-width:1400px;margin:0 auto"><div class="thumbnail-gallery" id="thumbnailGallery"></div></div>
+</section>
+<section class="cta-section">
+<h2>BOOK NOW</h2>
+<a href="#contact" class="cta-btn">GET STARTED</a>
+</section>
+<footer>
+<p>&copy; 2025 WILLOW SPENCE</p>
+<p style="margin-top:1rem"><a href="index.html">← BACK</a></p>
+</footer>
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+<div class="lightbox-content">
+<button class="lightbox-btn prev" onclick="lightboxChangeSlide(-1)">‹</button>
+<img class="lightbox-image" id="lightboxImage" src="">
+<button class="lightbox-btn next" onclick="lightboxChangeSlide(1)">›</button>
+</div>
+<div class="lightbox-counter"><span id="lightboxCurrentSlide">1</span>/<span id="lightboxTotalSlides">62</span></div>
+</div>
+<script>
+const images=Array.from({length:62},(_, i)=>`../images/photo_${i+1}_2025-11-02_10-09-51.jpg`);
+let currentIndex=0,lightboxIndex=0;
+function initGallery(){
+const c=document.getElementById('carouselContainer'),t=document.getElementById('thumbnailGallery');
+images.forEach((img,i)=>{
+c.innerHTML+=`<div class="carousel-slide"><img src="${img}" loading="lazy"></div>`;
+t.innerHTML+=`<div class="thumbnail ${i===0?'active':''}"><img src="${img}" loading="lazy" onclick="openLightbox(${i})"></div>`;
+});
+updateSlidePosition();
+}
+function openLightbox(i){lightboxIndex=i;document.getElementById('lightboxImage').src=images[i];document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden';updateLightboxCounter()}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
+function lightboxChangeSlide(d){lightboxIndex=(lightboxIndex+d+images.length)%images.length;document.getElementById('lightboxImage').src=images[lightboxIndex];updateLightboxCounter()}
+function updateLightboxCounter(){document.getElementById('lightboxCurrentSlide').textContent=lightboxIndex+1}
+function changeSlide(d){currentIndex=(currentIndex+d+images.length)%images.length;updateSlidePosition()}
+function updateSlidePosition(){
+document.getElementById('carouselContainer').style.transform=`translateX(-${currentIndex*100}%)`;
+document.getElementById('currentSlide').textContent=currentIndex+1;
+document.querySelectorAll('.thumbnail').forEach((t,i)=>t.classList.toggle('active',i===currentIndex));
+}
+document.addEventListener('keydown',e=>{
+const isOpen=document.getElementById('lightbox').classList.contains('active');
+if(isOpen){if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')lightboxChangeSlide(-1);if(e.key==='ArrowRight')lightboxChangeSlide(1)}
+else{if(e.key==='ArrowLeft')changeSlide(-1);if(e.key==='ArrowRight')changeSlide(1)}
+});
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox()});
+initGallery();
+</script>
+</body>
+</html>
