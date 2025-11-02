@@ -632,8 +632,8 @@
 
         <!-- Main Carousel -->
         <div class="gallery-carousel">
-            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+            <button class="carousel-btn prev" onclick="changeSlide(-1); return false;">❮</button>
+            <button class="carousel-btn next" onclick="changeSlide(1); return false;">❯</button>
 
             <div class="carousel-container" id="carouselContainer">
                 <!-- Images will be loaded here by JavaScript -->
@@ -842,10 +842,8 @@
                 thumb.classList.toggle('active', index === currentIndex);
             });
 
-            // Scroll thumbnail into view
-            if (thumbnails[currentIndex]) {
-                thumbnails[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
+            // Update thumbnail highlight only - no auto-scrolling to avoid page jumps
+            // Users can scroll to thumbnails manually if they want to see which is active
         }
 
         // Keyboard navigation
