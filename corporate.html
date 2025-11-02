@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willow Spence Urban Retreat | Historic 1906 Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.cdnfonts.com/css/ailerons');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--nexus-blue:#253471;
+--capital-green:#39b54a;
+--grey-line:#b4b4b5;
+--nexus-rgb:37,52,113;
+--capital-rgb:57,181,74;
+}
+body{font-family:'Ailerons',Arial,sans-serif;background:#fff;color:#333;line-height:1.6}
+.header{position:sticky;top:0;background:#fff;border-bottom:3px solid var(--nexus-blue);z-index:100;padding:1.5rem 0;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.container{max-width:1400px;margin:0 auto;padding:0 2rem}
+.header-content{display:flex;align-items:center;justify-content:space-between}
+.logo{max-height:60px;width:auto}
+.header-info{text-align:right}
+.header-title{font-family:'Archivo',sans-serif;font-size:1.1rem;font-weight:600;color:var(--nexus-blue);margin-bottom:0.3rem}
+.header-subtitle{font-size:0.9rem;color:var(--grey-line)}
+.hero{background:linear-gradient(135deg,rgba(37,52,113,0.95),rgba(37,52,113,0.85)),url('images/photo_1_2025-11-02_10-09-51.jpg');background-size:cover;background-position:center;color:#fff;padding:6rem 2rem;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--nexus-blue) 0%,var(--capital-green) 100%)}
+.hero-badge{display:inline-block;background:rgba(57,181,74,0.2);border:2px solid var(--capital-green);color:var(--capital-green);padding:0.5rem 1.5rem;border-radius:25px;font-size:0.9rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:1px}
+h1{font-family:'Archivo',sans-serif;font-size:4rem;font-weight:700;margin-bottom:1rem;letter-spacing:-1px;text-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.hero-subtitle{font-size:1.5rem;margin-bottom:0.5rem;opacity:0.95}
+.hero-location{font-size:1.1rem;opacity:0.85;margin-bottom:2rem}
+.hero-cta{display:inline-block;background:var(--capital-green);color:#fff;padding:1.2rem 3rem;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;transition:0.3s;box-shadow:0 5px 20px rgba(57,181,74,0.3);margin-top:1rem}
+.hero-cta:hover{background:#2d9a3c;transform:translateY(-3px);box-shadow:0 8px 30px rgba(57,181,74,0.4)}
+.features-bar{background:var(--nexus-blue);color:#fff;padding:2rem;text-align:center}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
+.feature-item{padding:1rem}
+.feature-number{font-family:'Archivo',sans-serif;font-size:2.5rem;font-weight:700;color:var(--capital-green);margin-bottom:0.5rem}
+.feature-label{font-size:1rem;opacity:0.9;text-transform:uppercase;letter-spacing:1px}
+.historical-section{padding:5rem 2rem;background:#f8f9fa}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-badge{display:inline-block;background:rgba(37,52,113,0.1);color:var(--nexus-blue);padding:0.5rem 1.5rem;border-radius:25px;font-size:0.9rem;font-weight:600;margin-bottom:1rem;letter-spacing:1px}
+.section-title{font-family:'Archivo',sans-serif;font-size:3rem;font-weight:700;color:var(--nexus-blue);margin-bottom:1rem}
+.section-subtitle{font-size:1.2rem;color:#666;max-width:800px;margin:0 auto}
+.historical-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1200px;margin:0 auto;align-items:center}
+.historical-text h3{font-family:'Archivo',sans-serif;font-size:1.8rem;color:var(--nexus-blue);margin-bottom:1rem}
+.historical-text p{font-size:1.05rem;line-height:1.8;color:#555;margin-bottom:1.5rem}
+.historical-image{border-radius:15px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.1)}
+.historical-image img{width:100%;height:auto;display:block}
+.timeline{background:#fff;padding:3rem;border-left:4px solid var(--capital-green);border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.05)}
+.timeline-item{margin-bottom:2rem;padding-left:2rem;position:relative}
+.timeline-item::before{content:'';position:absolute;left:-3rem;top:0.5rem;width:12px;height:12px;background:var(--capital-green);border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 3px var(--capital-green)}
+.timeline-year{font-family:'Archivo',sans-serif;font-size:1.3rem;font-weight:700;color:var(--nexus-blue);margin-bottom:0.5rem}
+.timeline-desc{color:#666;font-size:1rem}
+.gallery-section{padding:5rem 2rem;background:#fff}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1400px;margin:0 auto}
+.gallery-item{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:10px;cursor:pointer;transition:0.3s;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
+.gallery-item:hover{transform:translateY(-5px);box-shadow:0 10px 40px rgba(0,0,0,0.15)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:0.3s}
+.gallery-item:hover img{transform:scale(1.05)}
+.property-details{background:var(--nexus-blue);color:#fff;padding:5rem 2rem}
+.details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:3rem;max-width:1200px;margin:0 auto}
+.detail-card{background:rgba(255,255,255,0.1);padding:2.5rem;border-radius:15px;border:2px solid rgba(57,181,74,0.3);backdrop-filter:blur(10px)}
+.detail-card h3{font-family:'Archivo',sans-serif;font-size:1.5rem;margin-bottom:1.5rem;color:var(--capital-green);border-bottom:2px solid var(--capital-green);padding-bottom:0.5rem}
+.detail-card ul{list-style:none}
+.detail-card li{padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;align-items:center}
+.detail-card li::before{content:'✓';color:var(--capital-green);font-weight:700;margin-right:1rem;font-size:1.2rem}
+.cta-section{background:linear-gradient(135deg,var(--capital-green),#2d9a3c);color:#fff;padding:5rem 2rem;text-align:center}
+.cta-section h2{font-family:'Archivo',sans-serif;font-size:3rem;margin-bottom:1rem}
+.cta-section p{font-size:1.3rem;margin-bottom:2rem;opacity:0.95}
+.cta-button{display:inline-block;background:#fff;color:var(--capital-green);padding:1.3rem 3.5rem;text-decoration:none;border-radius:30px;font-weight:700;font-size:1.1rem;transition:0.3s;box-shadow:0 5px 20px rgba(0,0,0,0.2)}
+.cta-button:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+.footer{background:var(--nexus-blue);color:#fff;padding:2rem;text-align:center;border-top:3px solid var(--capital-green)}
+.footer p{opacity:0.8}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(37,52,113,0.98);z-index:1000}
+.lightbox.active{display:flex;align-items:center;justify-content:center}
+.lightbox-image{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 80px rgba(0,0,0,0.5)}
+.lightbox-close{position:fixed;top:2rem;right:2rem;background:var(--capital-green);color:#fff;border:none;padding:1rem 1.5rem;cursor:pointer;font-size:1.5rem;z-index:1001;border-radius:50%;transition:0.3s}
+.lightbox-close:hover{background:#2d9a3c;transform:scale(1.1)}
+.lightbox-btn{position:fixed;top:50%;transform:translateY(-50%);background:rgba(57,181,74,0.9);color:#fff;border:none;padding:2rem 1.5rem;cursor:pointer;font-size:2rem;z-index:1001;border-radius:10px;transition:0.3s}
+.lightbox-btn:hover{background:var(--capital-green)}
+.lightbox-btn.prev{left:2rem}
+.lightbox-btn.next{right:2rem}
+.lightbox-counter{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--nexus-blue);color:#fff;padding:1rem 2rem;font-size:1.1rem;z-index:1001;border-radius:30px}
+@media(max-width:1024px){
+h1{font-size:3rem}
+.historical-content{grid-template-columns:1fr}
+.section-title{font-size:2.5rem}
+}
+@media(max-width:768px){
+h1{font-size:2.5rem}
+.hero{padding:4rem 1.5rem}
+.features-grid{grid-template-columns:1fr 1fr}
+.details-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="header">
+<div class="container">
+<div class="header-content">
+<img src="logo.jpg" alt="Willow Spence" class="logo">
+<div class="header-info">
+<div class="header-title">National Register Historic District</div>
+<div class="header-subtitle">Est. 1906 • Austin, Texas</div>
+</div>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+<div class="hero-badge">NATIONAL REGISTER OF HISTORIC PLACES</div>
+<h1>Willow Spence Urban Retreat</h1>
+<p class="hero-subtitle">Turn-of-Century Estate • Sleeps 16 Guests</p>
+<p class="hero-location">1004 Spence Street • Willow-Spence Historic District • Austin, TX 78702</p>
+<a href="#gallery" class="hero-cta" onclick="document.getElementById('gallery').scrollIntoView({behavior: 'smooth'}); return false">Explore the Property</a>
+</div>
+</section>
+
+<section class="features-bar">
+<div class="container">
+<div class="features-grid">
+<div class="feature-item">
+<div class="feature-number">1906</div>
+<div class="feature-label">Built</div>
+</div>
+<div class="feature-item">
+<div class="feature-number">5</div>
+<div class="feature-label">Bedrooms</div>
+</div>
+<div class="feature-item">
+<div class="feature-number">6</div>
+<div class="feature-label">Bathrooms</div>
+</div>
+<div class="feature-item">
+<div class="feature-number">16</div>
+<div class="feature-label">Guest Capacity</div>
+</div>
+<div class="feature-item">
+<div class="feature-number">2</div>
+<div class="feature-label">Historic Buildings</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="historical-section">
+<div class="container">
+<div class="section-header">
+<div class="section-badge">HERITAGE & HISTORY</div>
+<h2 class="section-title">A Living Piece of Austin History</h2>
+<p class="section-subtitle">Discover the rich heritage of this meticulously preserved 1906 estate in the heart of Austin's Willow-Spence Streets Historic District</p>
+</div>
+<div class="historical-content">
+<div class="historical-text">
+<h3>Willow-Spence Historic District</h3>
+<p>The Willow-Spence Streets Historic District, added to the National Register of Historic Places in 1985, represents one of Austin's most significant architectural treasures. This East Austin neighborhood showcases the finest examples of early 20th-century vernacular building types.</p>
+<p>Built during the pivotal period between 1900 and 1930, the district's 68 contributing structures embody the transition from Victorian elegance to Craftsman/Bungalow simplicity—a golden age of American residential architecture.</p>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">1900-1930</div>
+<div class="timeline-desc">Peak construction era of wood-frame cottages showcasing late Victorian and Craftsman architecture</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1906</div>
+<div class="timeline-desc">This magnificent property constructed at the height of the district's development</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">1985</div>
+<div class="timeline-desc">Willow-Spence Streets Historic District officially designated on the National Register of Historic Places</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">Today</div>
+<div class="timeline-desc">Meticulously preserved estate offering modern luxury within historic authenticity</div>
+</div>
+</div>
+</div>
+<div class="historical-image">
+<img src="images/photo_2_2025-11-02_10-09-51.jpg" alt="Historic Property">
+</div>
+</div>
+</div>
+</section>
+
+<section class="historical-section" style="background:#fff">
+<div class="container">
+<div class="section-header">
+<div class="section-badge">IMMIGRANT HERITAGE</div>
+<h2 class="section-title">European Immigrant Legacy</h2>
+<p class="section-subtitle">The neighborhood was first settled by German, Scottish, Italian, and Armenian immigrants who shaped East Austin's cultural identity</p>
+</div>
+<div class="historical-content" style="grid-template-columns:1fr 1fr">
+<div class="historical-image">
+<img src="images/photo_3_2025-11-02_10-09-51.jpg" alt="Historic Architecture">
+</div>
+<div class="historical-text">
+<h3>Turn-of-Century Craftsmanship</h3>
+<p>Following the Civil War, European immigrants—primarily German families along with Scottish, Italian, and Armenian settlers—purchased subdivided lots in East Austin, establishing vibrant communities near their downtown businesses.</p>
+<p>These skilled craftsmen brought Old World building traditions, creating simple yet beautifully detailed wood-frame cottages that demonstrate exceptional craftsmanship. The fine joinery, thoughtful proportions, and attention to detail seen throughout the district reflect the pride these immigrant families took in establishing their American homes.</p>
+<p>This property stands as a testament to that heritage, maintaining the architectural integrity and craftsmanship values of its original builders while offering modern comforts for today's discerning guests.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="property-details">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title" style="color:#fff">Property Features</h2>
+<p class="section-subtitle" style="color:rgba(255,255,255,0.9)">Two historic buildings, modern amenities, authentic period details</p>
+</div>
+<div class="details-grid">
+<div class="detail-card">
+<h3>Main House</h3>
+<ul>
+<li>5 Spacious Bedrooms</li>
+<li>6 Full Bathrooms</li>
+<li>Original Victorian/Craftsman Details</li>
+<li>Restored Period Architecture</li>
+<li>Modern Kitchen & Appliances</li>
+<li>Central Air & Heating</li>
+<li>High-Speed WiFi</li>
+</ul>
+</div>
+<div class="detail-card">
+<h3>Guest House</h3>
+<ul>
+<li>Sleeps 6 Guests Comfortably</li>
+<li>Private Entrance</li>
+<li>Full Kitchen Facilities</li>
+<li>Complete Bathroom</li>
+<li>Living & Dining Areas</li>
+<li>Independent Climate Control</li>
+<li>Perfect for Extended Stays</li>
+</ul>
+</div>
+<div class="detail-card">
+<h3>Historic Features</h3>
+<ul>
+<li>Built 1906 - Turn of Century</li>
+<li>National Register District</li>
+<li>Original Wood Construction</li>
+<li>Period Architectural Elements</li>
+<li>Meticulously Maintained</li>
+<li>East Austin Heritage Location</li>
+<li>Walking Distance to Downtown</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="gallery-section" id="gallery">
+<div class="container">
+<div class="section-header">
+<div class="section-badge">PHOTO GALLERY</div>
+<h2 class="section-title">Experience the Estate</h2>
+<p class="section-subtitle">Explore every detail of this historic property</p>
+</div>
+<div class="gallery-grid" id="gallery-grid"></div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="container">
+<h2>Reserve Your Historic Retreat</h2>
+<p>Experience Austin's heritage in comfort and style</p>
+<a href="#contact" class="cta-button">Book Your Stay</a>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<p>&copy; 2024 Willow Spence Urban Retreat • National Register Historic District • Austin, Texas</p>
+</div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+<img class="lightbox-image" id="lightbox-image" src="" alt="Property">
+<button class="lightbox-btn prev" onclick="lightboxChangeSlide(-1)">‹</button>
+<button class="lightbox-btn next" onclick="lightboxChangeSlide(1)">›</button>
+<div class="lightbox-counter"><span id="lightbox-current">1</span> / 62</div>
+</div>
+
+<script>
+const images=Array.from({length:62},(_,i)=>`images/photo_${i+1}_2025-11-02_10-09-51.jpg`);
+let lightboxIndex=0;
+const galleryGrid=document.getElementById('gallery-grid');
+images.forEach((src,index)=>{
+const item=document.createElement('div');
+item.className='gallery-item';
+const img=document.createElement('img');
+img.src=src;
+img.alt=`Property Photo ${index+1}`;
+img.loading='lazy';
+item.appendChild(img);
+item.onclick=()=>openLightbox(index);
+galleryGrid.appendChild(item);
+});
+function openLightbox(index){
+lightboxIndex=index;
+document.getElementById('lightbox').classList.add('active');
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('active');
+document.body.style.overflow='auto';
+}
+function lightboxChangeSlide(direction){
+lightboxIndex=(lightboxIndex+direction+images.length)%images.length;
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+}
+document.addEventListener('keydown',(e)=>{
+if(document.getElementById('lightbox').classList.contains('active')){
+if(e.key==='ArrowLeft')lightboxChangeSlide(-1);
+if(e.key==='ArrowRight')lightboxChangeSlide(1);
+if(e.key==='Escape')closeLightbox();
+}
+});
+</script>
+</body>
+</html>
