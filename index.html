@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willow Spence Urban Retreat | Luxury 16-Bedroom Rental in Austin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+
+        /* Header with Logo */
+        header {
+            background: #000;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .hero .address {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .hero .specs {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .spec-item {
+            text-align: center;
+        }
+
+        .spec-item .number {
+            font-size: 2.5rem;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .spec-item .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #aaa;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Description Section */
+        .description {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .description h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #1a1a1a;
+            font-weight: 300;
+        }
+
+        .description-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .description-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 4rem 2rem;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .gallery-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: white;
+            font-weight: 300;
+        }
+
+        /* Main Gallery Carousel */
+        .gallery-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            border-radius: 8px;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 2rem;
+        }
+
+        .carousel-btn.next {
+            right: 2rem;
+        }
+
+        /* Carousel Counter */
+        .carousel-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+
+        /* Thumbnail Gallery */
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+            padding: 2rem 0;
+        }
+
+        .thumbnail {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail.active {
+            border: 3px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #d4af37;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .cta-btn:hover {
+            background: #c19b2f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .hero .specs {
+                gap: 1.5rem;
+            }
+
+            .spec-item .number {
+                font-size: 2rem;
+            }
+
+            .carousel-slide {
+                height: 50vh;
+            }
+
+            .carousel-btn {
+                padding: 0.5rem 1rem;
+                font-size: 1.5rem;
+            }
+
+            .carousel-btn.prev {
+                left: 1rem;
+            }
+
+            .carousel-btn.next {
+                right: 1rem;
+            }
+
+            .thumbnail-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 0.5rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top-color: #d4af37;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            z-index: 10001;
+        }
+
+        .lightbox-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-btn.prev {
+            left: 2rem;
+        }
+
+        .lightbox-btn.next {
+            right: 2rem;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            z-index: 10001;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1.8rem;
+            }
+
+            .lightbox-btn.prev {
+                left: 1rem;
+            }
+
+            .lightbox-btn.next {
+                right: 1rem;
+            }
+
+            .lightbox-close {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Willow Spence Urban Retreat Logo">
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>WILLOW SPENCE URBAN RETREAT</h1>
+        <p class="tagline">Where Luxury Meets Southern Charm</p>
+        <p class="address">1004 Spence Street, Austin, Texas 78702</p>
+
+        <div class="specs">
+            <div class="spec-item">
+                <div class="number">16</div>
+                <div class="label">Bedrooms</div>
+            </div>
+            <div class="spec-item">
+                <div class="number">16+</div>
+                <div class="label">Bathrooms</div>
+            </div>
+            <div class="spec-item">
+                <div class="number">32+</div>
+                <div class="label">Guests</div>
+            </div>
+            <div class="spec-item">
+                <div class="number">6,500+</div>
+                <div class="label">Sq Ft</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Description Section -->
+    <section class="description">
+        <div class="container">
+            <h2>Experience Austin's Premier Group Retreat</h2>
+            <div class="description-content">
+                <p>
+                    Nestled in the heart of Austin's vibrant East Side, Willow Spence Urban Retreat represents the pinnacle of luxury group accommodations. This meticulously renovated historic property seamlessly blends timeless Southern elegance with contemporary sophistication, creating an unparalleled escape for discerning travelers.
+                </p>
+                <p>
+                    With 16 thoughtfully designed bedrooms, each featuring premium furnishings and hotel-quality linens, this extraordinary estate accommodates up to 32 guests in absolute comfort. Every detail has been curated to provide an elevated experience, from the designer lighting fixtures to the spa-inspired bathrooms with rainfall showers and luxury amenities.
+                </p>
+                <p>
+                    The expansive common areas invite connection and celebration, featuring a gourmet chef's kitchen, multiple entertaining spaces, and a stunning wraparound porch perfect for sipping morning coffee or evening cocktails. Step outside to discover manicured grounds with outdoor seating areas, ideal for alfresco dining under the Texas stars.
+                </p>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="icon">🏛️</div>
+                        <h3>Historic Charm</h3>
+                        <p>Beautifully restored Victorian architecture with modern luxury upgrades</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🍳</div>
+                        <h3>Gourmet Kitchen</h3>
+                        <p>Professional-grade appliances and expansive prep space for any occasion</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">📍</div>
+                        <h3>Prime Location</h3>
+                        <p>Minutes from downtown Austin, South Congress, and East 6th Street</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">✨</div>
+                        <h3>Designer Interiors</h3>
+                        <p>Professionally decorated with high-end furnishings and attention to detail</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🎉</div>
+                        <h3>Event Ready</h3>
+                        <p>Perfect for weddings, corporate retreats, family reunions, and celebrations</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🌳</div>
+                        <h3>Private Grounds</h3>
+                        <p>Expansive outdoor spaces with seating areas and mature landscaping</p>
+                    </div>
+                </div>
+
+                <p>
+                    Whether you're planning a corporate retreat, family reunion, wedding celebration, or special getaway with friends, Willow Spence Urban Retreat offers the perfect backdrop for creating unforgettable memories in the Live Music Capital of the World.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h2>Explore The Property</h2>
+
+        <!-- Main Carousel -->
+        <div class="gallery-carousel">
+            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+
+            <div class="carousel-container" id="carouselContainer">
+                <!-- Images will be loaded here by JavaScript -->
+            </div>
+
+            <div class="carousel-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">62</span>
+            </div>
+        </div>
+
+        <!-- Thumbnail Gallery -->
+        <div class="container">
+            <div class="thumbnail-gallery" id="thumbnailGallery">
+                <!-- Thumbnails will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Book Your Stay?</h2>
+            <p>Experience the finest group accommodation Austin has to offer</p>
+            <a href="#contact" class="cta-btn">Check Availability</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Willow Spence Urban Retreat. All rights reserved.</p>
+        <p>1004 Spence Street, Austin, Texas 78702</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <div class="lightbox-content">
+            <button class="lightbox-btn prev" onclick="lightboxChangeSlide(-1)">❮</button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="Property photo">
+            <button class="lightbox-btn next" onclick="lightboxChangeSlide(1)">❯</button>
+        </div>
+        <div class="lightbox-counter">
+            <span id="lightboxCurrentSlide">1</span> / <span id="lightboxTotalSlides">62</span>
+        </div>
+    </div>
+
+    <script>
+        // Image array - all 62 photos
+        const images = [
+            'images/photo_1_2025-11-02_10-09-51.jpg',
+            'images/photo_2_2025-11-02_10-09-51.jpg',
+            'images/photo_3_2025-11-02_10-09-51.jpg',
+            'images/photo_4_2025-11-02_10-09-51.jpg',
+            'images/photo_5_2025-11-02_10-09-51.jpg',
+            'images/photo_6_2025-11-02_10-09-51.jpg',
+            'images/photo_7_2025-11-02_10-09-51.jpg',
+            'images/photo_8_2025-11-02_10-09-51.jpg',
+            'images/photo_9_2025-11-02_10-09-51.jpg',
+            'images/photo_10_2025-11-02_10-09-51.jpg',
+            'images/photo_11_2025-11-02_10-09-51.jpg',
+            'images/photo_12_2025-11-02_10-09-51.jpg',
+            'images/photo_13_2025-11-02_10-09-51.jpg',
+            'images/photo_14_2025-11-02_10-09-51.jpg',
+            'images/photo_15_2025-11-02_10-09-51.jpg',
+            'images/photo_16_2025-11-02_10-09-51.jpg',
+            'images/photo_17_2025-11-02_10-09-51.jpg',
+            'images/photo_18_2025-11-02_10-09-51.jpg',
+            'images/photo_19_2025-11-02_10-09-51.jpg',
+            'images/photo_20_2025-11-02_10-09-51.jpg',
+            'images/photo_21_2025-11-02_10-09-51.jpg',
+            'images/photo_22_2025-11-02_10-09-51.jpg',
+            'images/photo_23_2025-11-02_10-09-51.jpg',
+            'images/photo_24_2025-11-02_10-09-51.jpg',
+            'images/photo_25_2025-11-02_10-09-51.jpg',
+            'images/photo_26_2025-11-02_10-09-51.jpg',
+            'images/photo_27_2025-11-02_10-09-51.jpg',
+            'images/photo_28_2025-11-02_10-09-51.jpg',
+            'images/photo_29_2025-11-02_10-09-51.jpg',
+            'images/photo_30_2025-11-02_10-09-51.jpg',
+            'images/photo_31_2025-11-02_10-09-51.jpg',
+            'images/photo_32_2025-11-02_10-09-51.jpg',
+            'images/photo_33_2025-11-02_10-09-51.jpg',
+            'images/photo_34_2025-11-02_10-09-51.jpg',
+            'images/photo_35_2025-11-02_10-09-51.jpg',
+            'images/photo_36_2025-11-02_10-09-51.jpg',
+            'images/photo_37_2025-11-02_10-09-51.jpg',
+            'images/photo_38_2025-11-02_10-09-51.jpg',
+            'images/photo_39_2025-11-02_10-09-51.jpg',
+            'images/photo_40_2025-11-02_10-09-51.jpg',
+            'images/photo_41_2025-11-02_10-09-51.jpg',
+            'images/photo_42_2025-11-02_10-09-51.jpg',
+            'images/photo_43_2025-11-02_10-09-51.jpg',
+            'images/photo_44_2025-11-02_10-09-51.jpg',
+            'images/photo_45_2025-11-02_10-09-51.jpg',
+            'images/photo_46_2025-11-02_10-09-51.jpg',
+            'images/photo_47_2025-11-02_10-09-51.jpg',
+            'images/photo_48_2025-11-02_10-09-51.jpg',
+            'images/photo_49_2025-11-02_10-09-51.jpg',
+            'images/photo_50_2025-11-02_10-09-51.jpg',
+            'images/photo_51_2025-11-02_10-09-51.jpg',
+            'images/photo_52_2025-11-02_10-09-51.jpg',
+            'images/photo_53_2025-11-02_10-09-51.jpg',
+            'images/photo_54_2025-11-02_10-09-51.jpg',
+            'images/photo_55_2025-11-02_10-09-51.jpg',
+            'images/photo_56_2025-11-02_10-09-51.jpg',
+            'images/photo_57_2025-11-02_10-09-51.jpg',
+            'images/photo_58_2025-11-02_10-09-51.jpg',
+            'images/photo_59_2025-11-02_10-09-51.jpg',
+            'images/photo_60_2025-11-02_10-09-51.jpg',
+            'images/photo_61_2025-11-02_10-09-51.jpg',
+            'images/photo_62_2025-11-02_10-09-51.jpg'
+        ];
+
+        let currentIndex = 0;
+
+        // Initialize gallery
+        function initGallery() {
+            const carouselContainer = document.getElementById('carouselContainer');
+            const thumbnailGallery = document.getElementById('thumbnailGallery');
+
+            // Create carousel slides
+            images.forEach((img, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `<img src="${img}" alt="Property photo ${index + 1}" loading="lazy">`;
+                carouselContainer.appendChild(slide);
+
+                // Create thumbnails
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'thumbnail';
+                if (index === 0) thumbnail.classList.add('active');
+                thumbnail.innerHTML = `<img src="${img}" alt="Thumbnail ${index + 1}" loading="lazy">`;
+                thumbnail.onclick = () => openLightbox(index);
+                thumbnailGallery.appendChild(thumbnail);
+            });
+
+            updateSlidePosition();
+        }
+
+        // Lightbox functionality
+        let lightboxIndex = 0;
+
+        function openLightbox(index) {
+            lightboxIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+
+            lightboxImage.src = images[lightboxIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            updateLightboxCounter();
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        function lightboxChangeSlide(direction) {
+            lightboxIndex += direction;
+
+            if (lightboxIndex >= images.length) {
+                lightboxIndex = 0;
+            } else if (lightboxIndex < 0) {
+                lightboxIndex = images.length - 1;
+            }
+
+            const lightboxImage = document.getElementById('lightboxImage');
+            lightboxImage.src = images[lightboxIndex];
+            updateLightboxCounter();
+        }
+
+        function updateLightboxCounter() {
+            document.getElementById('lightboxCurrentSlide').textContent = lightboxIndex + 1;
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+
+            updateSlidePosition();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlidePosition();
+        }
+
+        function updateSlidePosition() {
+            const carouselContainer = document.getElementById('carouselContainer');
+            const offset = -currentIndex * 100;
+            carouselContainer.style.transform = `translateX(${offset}%)`;
+
+            // Update counter
+            document.getElementById('currentSlide').textContent = currentIndex + 1;
+
+            // Update active thumbnail
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentIndex);
+            });
+
+            // Scroll thumbnail into view
+            if (thumbnails[currentIndex]) {
+                thumbnails[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            const isLightboxOpen = lightbox.classList.contains('active');
+
+            if (isLightboxOpen) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') lightboxChangeSlide(-1);
+                if (e.key === 'ArrowRight') lightboxChangeSlide(1);
+            } else {
+                if (e.key === 'ArrowLeft') changeSlide(-1);
+                if (e.key === 'ArrowRight') changeSlide(1);
+            }
+        });
+
+        // Click outside lightbox to close
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.gallery-carousel').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.gallery-carousel').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) changeSlide(1);
+            if (touchEndX > touchStartX + 50) changeSlide(-1);
+        }
+
+        // Initialize on page load
+        initGallery();
+
+        // Auto-play carousel (optional - uncomment to enable)
+        // setInterval(() => changeSlide(1), 5000);
+    </script>
+</body>
+</html>
