@@ -92,6 +92,29 @@
             color: #aaa;
         }
 
+        .explore-btn {
+            display: inline-block;
+            background: #d4af37;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-top: 2rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .explore-btn:hover {
+            background: #c19b2f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
         /* Container */
         .container {
             max-width: 1400px;
@@ -393,6 +416,11 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Lightbox Modal */
         .lightbox {
             display: none;
@@ -569,6 +597,10 @@
                 <div class="label">Sq Ft</div>
             </div>
         </div>
+
+        <button class="explore-btn" onclick="document.getElementById('gallery').scrollIntoView({behavior: 'smooth'})">
+            Explore The Property
+        </button>
     </section>
 
     <!-- Description Section -->
@@ -627,7 +659,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery-section">
+    <section class="gallery-section" id="gallery">
         <h2>Explore The Property</h2>
 
         <!-- Main Carousel -->
