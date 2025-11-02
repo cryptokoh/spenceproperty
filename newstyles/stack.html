@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willow Spence | Card Stack</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Arial',sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:2rem 0}
+.header{text-align:center;margin-bottom:3rem;padding:2rem;color:#fff}
+.logo{max-height:60px;margin-bottom:1.5rem;filter:drop-shadow(0 5px 15px rgba(0,0,0,0.3))}
+h1{font-size:3rem;margin-bottom:0.5rem;text-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.subtitle{font-size:1.2rem;opacity:0.9}
+.stack-container{max-width:900px;margin:0 auto;min-height:80vh;position:relative;padding:2rem;perspective:1500px}
+.card-stack{position:relative;height:600px}
+.stack-card{position:absolute;width:100%;max-width:700px;aspect-ratio:4/3;left:50%;transform:translateX(-50%);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);cursor:pointer;transition:all 0.6s cubic-bezier(0.4,0,0.2,1);background:#fff}
+.stack-card img{width:100%;height:100%;object-fit:cover;display:block;transition:0.4s}
+.stack-card:hover img{transform:scale(1.05)}
+.card-number{position:absolute;top:1.5rem;right:1.5rem;background:rgba(0,0,0,0.7);color:#fff;padding:0.5rem 1.2rem;border-radius:20px;backdrop-filter:blur(10px);font-size:0.9rem;z-index:10}
+.controls{display:flex;justify-content:center;gap:1rem;margin-top:3rem}
+.control-btn{background:rgba(255,255,255,0.3);color:#fff;border:none;padding:1rem 2rem;border-radius:30px;cursor:pointer;font-size:1.1rem;backdrop-filter:blur(10px);transition:0.3s;font-weight:600}
+.control-btn:hover{background:rgba(255,255,255,0.5);transform:translateY(-3px);box-shadow:0 5px 20px rgba(0,0,0,0.2)}
+.progress{max-width:700px;margin:2rem auto;background:rgba(255,255,255,0.2);height:8px;border-radius:10px;overflow:hidden;backdrop-filter:blur(10px)}
+.progress-bar{height:100%;background:#fff;border-radius:10px;transition:0.6s;box-shadow:0 0 20px rgba(255,255,255,0.5)}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000}
+.lightbox.active{display:flex;align-items:center;justify-content:center}
+.lightbox-image{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:10px}
+.lightbox-close{position:fixed;top:2rem;right:2rem;background:rgba(255,255,255,0.2);color:#fff;border:none;padding:1rem 1.5rem;cursor:pointer;font-size:1.5rem;z-index:1001;border-radius:50%;backdrop-filter:blur(10px);transition:0.3s}
+.lightbox-close:hover{background:rgba(255,255,255,0.3)}
+.lightbox-btn{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);color:#fff;border:none;padding:2rem 1.5rem;cursor:pointer;font-size:2rem;z-index:1001;backdrop-filter:blur(10px);border-radius:50%;transition:0.3s}
+.lightbox-btn:hover{background:rgba(255,255,255,0.3)}
+.lightbox-btn.prev{left:2rem}
+.lightbox-btn.next{right:2rem}
+.lightbox-counter{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.2);color:#fff;padding:1rem 2rem;font-size:1.1rem;z-index:1001;border-radius:30px;backdrop-filter:blur(10px)}
+@media(max-width:768px){
+h1{font-size:2rem}
+.card-stack{height:400px}
+.controls{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+<div class="header">
+<img src="../logo.jpg" alt="Willow Spence" class="logo">
+<h1>Willow Spence Urban Retreat</h1>
+<p class="subtitle">Stack Gallery • Austin, Texas</p>
+</div>
+<div class="stack-container">
+<div class="card-stack" id="card-stack"></div>
+<div class="progress">
+<div class="progress-bar" id="progress-bar" style="width:1.6%"></div>
+</div>
+<div class="controls">
+<button class="control-btn" onclick="prevCard()">← Previous</button>
+<button class="control-btn" onclick="nextCard()">Next →</button>
+</div>
+</div>
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+<img class="lightbox-image" id="lightbox-image" src="" alt="Property">
+<button class="lightbox-btn prev" onclick="lightboxChangeSlide(-1)">‹</button>
+<button class="lightbox-btn next" onclick="lightboxChangeSlide(1)">›</button>
+<div class="lightbox-counter"><span id="lightbox-current">1</span> / 62</div>
+</div>
+<script>
+const images=Array.from({length:62},(_,i)=>`../images/photo_${i+1}_2025-11-02_10-09-51.jpg`);
+let currentCard=0;
+let lightboxIndex=0;
+const cardStack=document.getElementById('card-stack');
+const visibleCards=5;
+images.forEach((src,index)=>{
+const card=document.createElement('div');
+card.className='stack-card';
+card.dataset.index=index;
+const img=document.createElement('img');
+img.src=src;
+img.alt=`Property ${index+1}`;
+img.loading='lazy';
+const number=document.createElement('div');
+number.className='card-number';
+number.textContent=`${index+1} / ${images.length}`;
+card.appendChild(img);
+card.appendChild(number);
+card.onclick=()=>openLightbox(index);
+cardStack.appendChild(card);
+});
+function updateStack(){
+const cards=document.querySelectorAll('.stack-card');
+cards.forEach((card,index)=>{
+const position=index-currentCard;
+if(position<0){
+card.style.transform='translateX(-50%) translateY(-120%) scale(0.8) rotateZ(-10deg)';
+card.style.opacity='0';
+card.style.zIndex=0;
+card.style.pointerEvents='none';
+}else if(position<visibleCards){
+const scale=1-(position*0.05);
+const translateY=position*20;
+const translateZ=-position*50;
+const rotate=position*2;
+card.style.transform=`translateX(-50%) translateY(${translateY}px) translateZ(${translateZ}px) scale(${scale}) rotateZ(${rotate}deg)`;
+card.style.opacity=1-(position*0.15);
+card.style.zIndex=visibleCards-position;
+card.style.pointerEvents=position===0?'auto':'none';
+}else{
+card.style.transform='translateX(-50%) translateY(100%) scale(0.8)';
+card.style.opacity='0';
+card.style.zIndex=0;
+card.style.pointerEvents='none';
+}
+});
+const progress=(currentCard/(images.length-1))*100;
+document.getElementById('progress-bar').style.width=progress+'%';
+}
+function nextCard(){
+if(currentCard<images.length-1){
+currentCard++;
+updateStack();
+}
+}
+function prevCard(){
+if(currentCard>0){
+currentCard--;
+updateStack();
+}
+}
+function openLightbox(index){
+lightboxIndex=index;
+document.getElementById('lightbox').classList.add('active');
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('active');
+document.body.style.overflow='auto';
+}
+function lightboxChangeSlide(direction){
+lightboxIndex=(lightboxIndex+direction+images.length)%images.length;
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+}
+document.addEventListener('keydown',(e)=>{
+if(document.getElementById('lightbox').classList.contains('active')){
+if(e.key==='ArrowLeft')lightboxChangeSlide(-1);
+if(e.key==='ArrowRight')lightboxChangeSlide(1);
+if(e.key==='Escape')closeLightbox();
+}else{
+if(e.key==='ArrowLeft')prevCard();
+if(e.key==='ArrowRight')nextCard();
+}
+});
+updateStack();
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willow Spence | Magical Layout Styles</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:3rem 1rem}
+.container{max-width:1400px;margin:0 auto}
+.header{text-align:center;margin-bottom:3rem;color:#fff}
+.header h1{font-size:3.5rem;margin-bottom:1rem;text-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.header p{font-size:1.3rem;opacity:0.9}
+.back-link{display:inline-block;margin-bottom:2rem;padding:0.8rem 2rem;background:rgba(255,255,255,0.2);color:#fff;text-decoration:none;border-radius:25px;backdrop-filter:blur(10px);transition:0.3s}
+.back-link:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem}
+.card{background:rgba(255,255,255,0.95);border-radius:15px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.2);transition:0.3s;cursor:pointer}
+.card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+.card-preview{height:200px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
+.card-content{padding:2rem}
+.card h2{font-size:1.5rem;margin-bottom:0.5rem;color:#333}
+.card-tag{display:inline-block;padding:0.3rem 0.8rem;background:#667eea;color:#fff;font-size:0.8rem;border-radius:20px;margin-bottom:0.8rem}
+.card p{color:#666;line-height:1.6;margin-bottom:1rem}
+.card-features{display:flex;flex-wrap:wrap;gap:0.5rem}
+.feature-tag{font-size:0.75rem;padding:0.3rem 0.6rem;background:#f0f0f0;color:#555;border-radius:12px}
+@media(max-width:768px){
+.header h1{font-size:2.5rem}
+.grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>✨ Magical Layout Styles ✨</h1>
+<p>Advanced CSS & JavaScript Gallery Designs</p>
+</div>
+<a href="../index.html" class="back-link">← Back to Main Gallery</a>
+<div class="grid">
+<div class="card" onclick="location.href='parallax.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#667eea,#764ba2)">🌌</div>
+<div class="card-content">
+<span class="card-tag">3D Effect</span>
+<h2>Parallax Depth Scrolling</h2>
+<p>Multiple layers scroll at different speeds creating mesmerizing 3D depth effects with floating overlays.</p>
+<div class="card-features">
+<span class="feature-tag">Parallax Scroll</span>
+<span class="feature-tag">Multi-layer</span>
+<span class="feature-tag">Smooth Animation</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='bento.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#f093fb,#f5576c)">🎨</div>
+<div class="card-content">
+<span class="card-tag">Apple-Style</span>
+<h2>Bento Grid</h2>
+<p>Asymmetric editorial grid with varying sizes, inspired by Apple's modern design language.</p>
+<div class="card-features">
+<span class="feature-tag">Asymmetric Grid</span>
+<span class="feature-tag">Hover Effects</span>
+<span class="feature-tag">Editorial</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='tilt.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">🎴</div>
+<div class="card-content">
+<span class="card-tag">Interactive</span>
+<h2>3D Tilt Gallery</h2>
+<p>Cards tilt based on mouse position with perspective transforms and shine effects.</p>
+<div class="card-features">
+<span class="feature-tag">3D Transform</span>
+<span class="feature-tag">Mouse Tracking</span>
+<span class="feature-tag">Glare Effect</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='glass.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#a8edea,#fed6e3)">💎</div>
+<div class="card-content">
+<span class="card-tag">Modern</span>
+<h2>Glassmorphism</h2>
+<p>Frosted glass panels with backdrop blur over vibrant gradients for ultra-modern aesthetic.</p>
+<div class="card-features">
+<span class="feature-tag">Backdrop Blur</span>
+<span class="feature-tag">Transparency</span>
+<span class="feature-tag">Gradients</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='snap.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#fa709a,#fee140)">📱</div>
+<div class="card-content">
+<span class="card-tag">Immersive</span>
+<h2>Fullscreen Snap</h2>
+<p>Each photo takes full viewport with smooth scroll snapping for immersive viewing.</p>
+<div class="card-features">
+<span class="feature-tag">Scroll Snap</span>
+<span class="feature-tag">Fullscreen</span>
+<span class="feature-tag">Minimal Nav</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='masonry.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#ffecd2,#fcb69f)">🧱</div>
+<div class="card-content">
+<span class="card-tag">Pinterest-Style</span>
+<h2>Masonry Layout</h2>
+<p>Irregular grid with varying heights for organic, flowing Pinterest-style gallery.</p>
+<div class="card-features">
+<span class="feature-tag">Irregular Grid</span>
+<span class="feature-tag">Lazy Loading</span>
+<span class="feature-tag">Dynamic</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='horizontal.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#ff9a9e,#fecfef)">↔️</div>
+<div class="card-content">
+<span class="card-tag">Unique</span>
+<h2>Horizontal Infinite Scroll</h2>
+<p>Side-scrolling photo strip with smooth momentum and drag navigation.</p>
+<div class="card-features">
+<span class="feature-tag">Horizontal Scroll</span>
+<span class="feature-tag">Drag to Navigate</span>
+<span class="feature-tag">Momentum</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='stagger.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#96fbc4,#f9f586)">⚡</div>
+<div class="card-content">
+<span class="card-tag">Animated</span>
+<h2>Animated Stagger Grid</h2>
+<p>Images cascade in on scroll with staggered timing for engaging reveal animations.</p>
+<div class="card-features">
+<span class="feature-tag">Scroll Animations</span>
+<span class="feature-tag">Cascade Effect</span>
+<span class="feature-tag">Intersection Observer</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='diagonal.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#a1c4fd,#c2e9fb)">📐</div>
+<div class="card-content">
+<span class="card-tag">Editorial</span>
+<h2>Split Screen Diagonal</h2>
+<p>Bold diagonal split layout with animated transitions between content and imagery.</p>
+<div class="card-features">
+<span class="feature-tag">Diagonal Split</span>
+<span class="feature-tag">Transitions</span>
+<span class="feature-tag">Bold Design</span>
+</div>
+</div>
+</div>
+
+<div class="card" onclick="location.href='stack.html'">
+<div class="card-preview" style="background:linear-gradient(135deg,#d299c2,#fef9d7)">📚</div>
+<div class="card-content">
+<span class="card-tag">App-Like</span>
+<h2>Floating Card Stack</h2>
+<p>Cards stack and peel away on scroll with 3D transforms and depth shadows.</p>
+<div class="card-features">
+<span class="feature-tag">Card Stack</span>
+<span class="feature-tag">3D Depth</span>
+<span class="feature-tag">Peel Effect</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

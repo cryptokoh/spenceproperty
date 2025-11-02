@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willow Spence | 3D Tilt Gallery</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Arial',sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:2rem}
+.header{text-align:center;margin-bottom:3rem;color:#fff}
+.logo{max-height:60px;margin-bottom:1.5rem;filter:drop-shadow(0 5px 15px rgba(0,0,0,0.3))}
+h1{font-size:3rem;margin-bottom:0.5rem;text-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.subtitle{font-size:1.2rem;opacity:0.9}
+.tilt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2.5rem;max-width:1400px;margin:0 auto;perspective:1500px}
+.tilt-card{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;cursor:pointer;transition:all 0.1s ease;transform-style:preserve-3d;box-shadow:0 15px 50px rgba(0,0,0,0.3)}
+.tilt-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,rgba(255,255,255,0.1),transparent);opacity:0;transition:0.3s;z-index:2;pointer-events:none}
+.tilt-card:hover::before{opacity:1}
+.tilt-card img{width:100%;height:100%;object-fit:cover;transition:0.3s}
+.tilt-card:hover img{filter:brightness(1.1)}
+.tilt-shine{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(255,255,255,0.4) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:3}
+.tilt-card:hover .tilt-shine{opacity:1}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;backdrop-filter:blur(20px)}
+.lightbox.active{display:flex;align-items:center;justify-content:center}
+.lightbox-content{position:relative;max-width:90vw;max-height:90vh}
+.lightbox-image{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 80px rgba(0,0,0,0.8)}
+.lightbox-close{position:fixed;top:2rem;right:2rem;background:rgba(255,255,255,0.2);color:#fff;border:none;padding:1rem 1.5rem;cursor:pointer;font-size:1.5rem;z-index:1001;border-radius:50%;backdrop-filter:blur(10px);transition:0.3s}
+.lightbox-close:hover{background:rgba(255,255,255,0.3);transform:scale(1.1)}
+.lightbox-btn{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);color:#fff;border:none;padding:2rem 1.5rem;cursor:pointer;font-size:2rem;z-index:1001;backdrop-filter:blur(10px);border-radius:50%;transition:0.3s}
+.lightbox-btn:hover{background:rgba(255,255,255,0.3);transform:translateY(-50%) scale(1.1)}
+.lightbox-btn.prev{left:2rem}
+.lightbox-btn.next{right:2rem}
+.lightbox-counter{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.2);color:#fff;padding:1rem 2rem;font-size:1.1rem;z-index:1001;border-radius:30px;backdrop-filter:blur(10px)}
+@media(max-width:768px){
+h1{font-size:2rem}
+.tilt-grid{grid-template-columns:1fr;gap:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="header">
+<img src="../logo.jpg" alt="Willow Spence" class="logo">
+<h1>Willow Spence Urban Retreat</h1>
+<p class="subtitle">Interactive 3D Gallery • Austin, Texas</p>
+</div>
+<div class="tilt-grid" id="tilt-grid"></div>
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+<div class="lightbox-content">
+<img class="lightbox-image" id="lightbox-image" src="" alt="Property">
+</div>
+<button class="lightbox-btn prev" onclick="lightboxChangeSlide(-1)">‹</button>
+<button class="lightbox-btn next" onclick="lightboxChangeSlide(1)">›</button>
+<div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">62</span></div>
+</div>
+<script>
+const images=Array.from({length:62},(_,i)=>`../images/photo_${i+1}_2025-11-02_10-09-51.jpg`);
+let lightboxIndex=0;
+const tiltGrid=document.getElementById('tilt-grid');
+images.forEach((src,index)=>{
+const card=document.createElement('div');
+card.className='tilt-card';
+const img=document.createElement('img');
+img.src=src;
+img.alt=`Property ${index+1}`;
+img.loading='lazy';
+const shine=document.createElement('div');
+shine.className='tilt-shine';
+card.appendChild(img);
+card.appendChild(shine);
+card.onclick=()=>openLightbox(index);
+card.addEventListener('mousemove',(e)=>{
+const rect=card.getBoundingClientRect();
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+const centerX=rect.width/2;
+const centerY=rect.height/2;
+const rotateX=(y-centerY)/10;
+const rotateY=(centerX-x)/10;
+card.style.transform=`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05,1.05,1.05)`;
+const percentX=(x/rect.width)*100;
+const percentY=(y/rect.height)*100;
+shine.style.setProperty('--mouse-x',`${percentX}%`);
+shine.style.setProperty('--mouse-y',`${percentY}%`);
+});
+card.addEventListener('mouseleave',()=>{
+card.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)';
+});
+tiltGrid.appendChild(card);
+});
+function openLightbox(index){
+lightboxIndex=index;
+document.getElementById('lightbox').classList.add('active');
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('active');
+document.body.style.overflow='auto';
+}
+function lightboxChangeSlide(direction){
+lightboxIndex=(lightboxIndex+direction+images.length)%images.length;
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+}
+document.addEventListener('keydown',(e)=>{
+if(document.getElementById('lightbox').classList.contains('active')){
+if(e.key==='ArrowLeft')lightboxChangeSlide(-1);
+if(e.key==='ArrowRight')lightboxChangeSlide(1);
+if(e.key==='Escape')closeLightbox();
+}
+});
+</script>
+</body>
+</html>

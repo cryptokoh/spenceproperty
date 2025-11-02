@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willow Spence | Fullscreen Snap</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth;overflow-y:scroll}
+body{font-family:'Arial',sans-serif;margin:0;overflow-x:hidden}
+.snap-section{height:100vh;width:100vw;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;justify-content:center}
+.hero-section{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;flex-direction:column;text-align:center;padding:2rem}
+.logo{max-width:200px;margin-bottom:2rem;filter:drop-shadow(0 10px 30px rgba(255,255,255,0.2))}
+.hero-title{font-size:4rem;margin-bottom:1rem;text-shadow:0 5px 20px rgba(0,0,0,0.5);animation:fadeIn 1s}
+.hero-subtitle{font-size:1.5rem;opacity:0.9;margin-bottom:2rem;animation:fadeIn 1s 0.3s backwards}
+.scroll-indicator{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);font-size:2rem;animation:bounce 2s infinite;opacity:0.7}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-15px)}}
+.image-section{position:relative;overflow:hidden}
+.image-section img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
+.image-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);padding:3rem 2rem;color:#fff;z-index:2;opacity:0;transition:0.5s}
+.snap-section:hover .image-overlay{opacity:1}
+.image-count{font-size:1rem;margin-bottom:0.5rem;opacity:0.8}
+.image-title{font-size:1.5rem;font-weight:600}
+.nav-dots{position:fixed;right:2rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:0.8rem}
+.nav-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3);border:2px solid #fff;cursor:pointer;transition:0.3s}
+.nav-dot.active{background:#fff;transform:scale(1.3)}
+.nav-dot:hover{background:rgba(255,255,255,0.6)}
+@media(max-width:768px){
+.hero-title{font-size:2.5rem}
+.hero-subtitle{font-size:1.2rem}
+.nav-dots{right:1rem;gap:0.5rem}
+.nav-dot{width:8px;height:8px}
+}
+</style>
+</head>
+<body>
+<div class="snap-section hero-section">
+<img src="../logo.jpg" alt="Willow Spence" class="logo">
+<h1 class="hero-title">Willow Spence</h1>
+<p class="hero-subtitle">Urban Retreat • 16 Bedrooms • Austin, Texas</p>
+<div class="scroll-indicator">↓</div>
+</div>
+<div id="snap-container"></div>
+<div class="nav-dots" id="nav-dots"></div>
+<script>
+const images=Array.from({length:62},(_,i)=>`../images/photo_${i+1}_2025-11-02_10-09-51.jpg`);
+const snapContainer=document.getElementById('snap-container');
+const navDots=document.getElementById('nav-dots');
+const heroSection=document.querySelector('.hero-section');
+const heroObserver=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+document.querySelectorAll('.nav-dot').forEach(dot=>dot.classList.remove('active'));
+}
+});
+},{threshold:0.5});
+heroObserver.observe(heroSection);
+images.forEach((src,index)=>{
+const section=document.createElement('div');
+section.className='snap-section image-section';
+section.id=`section-${index}`;
+const img=document.createElement('img');
+img.src=src;
+img.alt=`Property ${index+1}`;
+img.loading='lazy';
+const overlay=document.createElement('div');
+overlay.className='image-overlay';
+overlay.innerHTML=`
+<div class="image-count">${index+1} / ${images.length}</div>
+<div class="image-title">Willow Spence Urban Retreat</div>
+`;
+section.appendChild(img);
+section.appendChild(overlay);
+snapContainer.appendChild(section);
+const dot=document.createElement('div');
+dot.className='nav-dot';
+if(index===0)dot.classList.add('active');
+dot.onclick=()=>{
+section.scrollIntoView({behavior:'smooth'});
+};
+navDots.appendChild(dot);
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+document.querySelectorAll('.nav-dot').forEach(d=>d.classList.remove('active'));
+dot.classList.add('active');
+}
+});
+},{threshold:0.5});
+observer.observe(section);
+});
+</script>
+</body>
+</html>
