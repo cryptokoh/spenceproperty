@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Variations - Willow Spence Urban Retreat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #000;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .variations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .variation-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .variation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .variation-preview {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .variation-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .variation-preview::after {
+            content: 'PREVIEW';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255,255,255,0.3);
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .variation-info {
+            padding: 2rem;
+        }
+
+        .variation-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .variation-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .variation-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .view-btn {
+            display: inline-block;
+            background: #000;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            font-weight: 600;
+        }
+
+        .view-btn:hover {
+            background: #333;
+        }
+
+        .original-link {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .original-link a {
+            display: inline-block;
+            background: #d4af37;
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .original-link a:hover {
+            background: #c19b2f;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Design Variations</h1>
+        <p>Willow Spence Urban Retreat Property Listing Styles</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Choose Your Style</h2>
+            <p>Explore 10 different design variations for the property listing. Each style offers a unique aesthetic while maintaining all features.</p>
+        </div>
+
+        <div class="original-link">
+            <h3 style="margin-bottom: 1rem;">View Original Design</h3>
+            <a href="../index.html">Original Luxury Style</a>
+        </div>
+
+        <div class="variations-grid">
+            <!-- Style 1: Airbnb Classic -->
+            <div class="variation-card" onclick="window.location.href='airbnb-classic.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #FF385C 0%, #FF5A5F 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Airbnb Classic</h3>
+                    <p>Inspired by Airbnb's clean and friendly design. Circular images, rounded corners, and approachable typography.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Clean</span>
+                        <span class="tag">Friendly</span>
+                        <span class="tag">Modern</span>
+                    </div>
+                    <a href="airbnb-classic.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 2: Minimalist Clean -->
+            <div class="variation-card" onclick="window.location.href='minimalist.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Minimalist Clean</h3>
+                    <p>Less is more. Maximum white space, minimal colors, and focus on the property itself.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Simple</span>
+                        <span class="tag">Elegant</span>
+                        <span class="tag">Spacious</span>
+                    </div>
+                    <a href="minimalist.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 3: Dark Luxury -->
+            <div class="variation-card" onclick="window.location.href='dark-luxury.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Dark Luxury</h3>
+                    <p>Sophisticated dark theme with gold accents. Perfect for high-end luxury properties.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Luxury</span>
+                        <span class="tag">Sophisticated</span>
+                        <span class="tag">Premium</span>
+                    </div>
+                    <a href="dark-luxury.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 4: Bright & Airy -->
+            <div class="variation-card" onclick="window.location.href='bright-airy.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Bright & Airy</h3>
+                    <p>Light, fresh, and inviting. Soft colors and plenty of breathing room.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Light</span>
+                        <span class="tag">Fresh</span>
+                        <span class="tag">Welcoming</span>
+                    </div>
+                    <a href="bright-airy.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 5: Modern Bold -->
+            <div class="variation-card" onclick="window.location.href='modern-bold.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Modern Bold</h3>
+                    <p>Strong colors and geometric shapes. Eye-catching and contemporary.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Bold</span>
+                        <span class="tag">Vibrant</span>
+                        <span class="tag">Contemporary</span>
+                    </div>
+                    <a href="modern-bold.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 6: Boutique Hotel -->
+            <div class="variation-card" onclick="window.location.href='boutique-hotel.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #8B7355 0%, #6F5C4E 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Boutique Hotel</h3>
+                    <p>Upscale hotel aesthetic with rich textures and refined details.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Upscale</span>
+                        <span class="tag">Refined</span>
+                        <span class="tag">Professional</span>
+                    </div>
+                    <a href="boutique-hotel.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 7: Magazine Editorial -->
+            <div class="variation-card" onclick="window.location.href='magazine.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #ffffff 0%, #eeeeee 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Magazine Editorial</h3>
+                    <p>Clean editorial layout with large typography and stunning imagery.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Editorial</span>
+                        <span class="tag">Stylish</span>
+                        <span class="tag">Professional</span>
+                    </div>
+                    <a href="magazine.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 8: Scandinavian -->
+            <div class="variation-card" onclick="window.location.href='scandinavian.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Scandinavian</h3>
+                    <p>Minimalist, functional, and natural. Nordic design principles at their best.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Minimal</span>
+                        <span class="tag">Natural</span>
+                        <span class="tag">Functional</span>
+                    </div>
+                    <a href="scandinavian.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 9: Urban Industrial -->
+            <div class="variation-card" onclick="window.location.href='urban-industrial.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #4a4a4a 0%, #2c2c2c 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Urban Industrial</h3>
+                    <p>Raw textures, exposed elements, and modern Austin urban aesthetics.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Raw</span>
+                        <span class="tag">Urban</span>
+                        <span class="tag">Edgy</span>
+                    </div>
+                    <a href="urban-industrial.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+
+            <!-- Style 10: Luxury Resort -->
+            <div class="variation-card" onclick="window.location.href='luxury-resort.html'">
+                <div class="variation-preview" style="background: linear-gradient(135deg, #2C5F2D 0%, #97BC62 100%);">
+                </div>
+                <div class="variation-info">
+                    <h3>Luxury Resort</h3>
+                    <p>Vacation-inspired design with lush imagery and relaxing color palette.</p>
+                    <div class="variation-tags">
+                        <span class="tag">Vacation</span>
+                        <span class="tag">Relaxing</span>
+                        <span class="tag">Tropical</span>
+                    </div>
+                    <a href="luxury-resort.html" class="view-btn">View Style</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Willow Spence Urban Retreat. All rights reserved.</p>
+    </footer>
+</body>
+</html>
