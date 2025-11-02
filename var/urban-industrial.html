@@ -3,34 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Willow Spence | Style Variation</title>
+<title>Willow Spence Urban Retreat | Urban Industrial</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f5f5f5;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
-.container{background:white;padding:4rem 3rem;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.1);max-width:600px;text-align:center}
-.logo{max-width:200px;margin:0 auto 2rem}
-.logo img{width:100%;height:auto}
-h1{font-size:2rem;margin-bottom:1rem;color:#333}
-p{font-size:1.1rem;color:# 666;margin-bottom:2rem;line-height:1.6}
-.btn{display:inline-block;background:#000;color:white;padding:1rem 3rem;text-decoration:none;border-radius:8px;margin:0.5rem;transition:0.3s}
-.btn:hover{background:#333;transform:translateY(-2px)}
-.btn.secondary{background:#d4af37}
-.btn.secondary:hover{background:#c19b2f}
+body{font-family:'Courier New',Courier,monospace;background:#1c1c1c;color:#e0e0e0;line-height:1.6}
+.header{position:sticky;top:0;background:#2a2a2a;border-bottom:2px solid #444;z-index:100;padding:1rem 0}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.logo-container{text-align:center}
+.logo{max-height:55px;width:auto;filter:brightness(1.2)}
+.hero{padding:3.5rem 2rem;background:#2a2a2a;border-left:5px solid #ff6b35}
+h1{font-size:3rem;font-weight:700;letter-spacing:3px;margin-bottom:0.5rem;color:#ff6b35;text-transform:uppercase}
+.subtitle{font-size:1.2rem;font-weight:400;color:#bbb;margin-bottom:1.5rem;letter-spacing:2px;font-family:Arial,sans-serif}
+.location{font-size:1rem;color:#888;font-family:Arial,sans-serif}
+.feature-text{max-width:800px;margin:3rem auto;padding:0 2rem;font-size:1.1rem;line-height:1.8;color:#ccc;border-left:3px solid #666;padding-left:1.5rem;font-family:Arial,sans-serif}
+.gallery{padding:3rem 2rem;background:#1c1c1c}
+.carousel-container{position:relative;max-width:1000px;margin:0 auto 2rem;background:#000;aspect-ratio:16/9;border:2px solid #444}
+.carousel-image{width:100%;height:100%;object-fit:cover;display:none;filter:contrast(1.1)}
+.carousel-image.active{display:block}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,107,53,0.9);color:#fff;border:2px solid #ff6b35;padding:1.5rem 1rem;cursor:pointer;font-size:2rem;transition:0.3s;z-index:10;font-family:'Courier New',Courier,monospace}
+.carousel-btn:hover{background:#ff6b35;box-shadow:0 0 15px rgba(255,107,53,0.5)}
+.carousel-btn.prev{left:0}
+.carousel-btn.next{right:0}
+.counter{position:absolute;bottom:1rem;right:1rem;background:rgba(255,107,53,0.9);color:#fff;padding:0.5rem 1rem;font-size:0.9rem;letter-spacing:2px;border:1px solid #ff6b35}
+.thumbnails{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:0.5rem;max-width:1000px;margin:0 auto}
+.thumbnail{width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer;opacity:0.5;transition:0.3s;border:2px solid #444;filter:grayscale(0.3)}
+.thumbnail:hover,.thumbnail.active{opacity:1;border-color:#ff6b35;filter:grayscale(0)}
+.features{padding:4rem 2rem;background:#2a2a2a}
+.features h2{font-size:2.5rem;margin-bottom:3rem;font-weight:700;color:#ff6b35;letter-spacing:3px;text-transform:uppercase;text-align:center}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1000px;margin:0 auto}
+.feature-card{padding:2rem;background:#1c1c1c;border:2px solid #444;border-left:4px solid #ff6b35}
+.feature-icon{font-size:2rem;margin-bottom:1rem;display:block;color:#ff6b35}
+.feature-card h3{font-size:1.2rem;margin-bottom:0.5rem;font-weight:700;color:#e0e0e0;letter-spacing:1px;text-transform:uppercase}
+.feature-card p{color:#aaa;font-size:0.95rem;font-family:Arial,sans-serif}
+.cta{padding:5rem 2rem;text-align:center;background:#1c1c1c;border-top:3px solid #ff6b35}
+.cta h2{font-size:2.5rem;margin-bottom:1rem;font-weight:700;color:#ff6b35;letter-spacing:3px;text-transform:uppercase}
+.cta-btn{display:inline-block;background:#ff6b35;color:#fff;padding:1.2rem 3rem;text-decoration:none;margin-top:1rem;font-size:1.1rem;letter-spacing:2px;text-transform:uppercase;transition:0.3s;border:2px solid #ff6b35;font-family:'Courier New',Courier,monospace}
+.cta-btn:hover{background:transparent;color:#ff6b35;box-shadow:0 0 20px rgba(255,107,53,0.4)}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000}
+.lightbox.active{display:block}
+.lightbox-content{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);max-width:90vw;max-height:90vh}
+.lightbox-image{max-width:90vw;max-height:90vh;object-fit:contain;display:block;border:3px solid #444}
+.lightbox-close{position:fixed;top:2rem;right:2rem;background:#ff6b35;color:#fff;border:2px solid #ff6b35;padding:1rem 1.5rem;cursor:pointer;font-size:1.5rem;z-index:1001;font-family:'Courier New',Courier,monospace}
+.lightbox-close:hover{background:transparent;color:#ff6b35}
+.lightbox-btn{position:fixed;top:50%;transform:translateY(-50%);background:#ff6b35;color:#fff;border:2px solid #ff6b35;padding:2rem 1.5rem;cursor:pointer;font-size:2rem;z-index:1001;font-family:'Courier New',Courier,monospace}
+.lightbox-btn:hover{background:transparent;color:#ff6b35}
+.lightbox-btn.prev{left:2rem}
+.lightbox-btn.next{right:2rem}
+.lightbox-counter{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#ff6b35;color:#fff;padding:1rem 2rem;font-size:1.1rem;letter-spacing:2px;z-index:1001;border:2px solid #ff6b35}
+@media(max-width:768px){
+h1{font-size:2rem}
+.subtitle{font-size:1rem}
+.carousel-btn{padding:1rem 0.7rem;font-size:1.5rem}
+.thumbnails{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}
+.features h2,.cta h2{font-size:2rem}
+}
 </style>
 </head>
 <body>
+<header class="header">
 <div class="container">
-<div class="logo"><img src="../logo.jpg" alt="Willow Spence"></div>
-<h1>Design Variation Coming Soon</h1>
-<p>This style variation is currently in development. Check out our other beautiful designs in the meantime!</p>
-<a href="airbnb-classic.html" class="btn">Airbnb Classic</a>
-<a href="minimalist.html" class="btn">Minimalist</a>
-<a href="dark-luxury.html" class="btn secondary">Dark Luxury</a>
-<a href="bright-airy.html" class="btn">Bright & Airy</a>
-<a href="modern-bold.html" class="btn">Modern Bold</a>
-<div style="margin-top:2rem">
-<a href="index.html" style="color:#666;text-decoration:none">← Back to All Styles</a>
+<div class="logo-container"><img src="../logo.jpg" alt="Willow Spence" class="logo"></div>
+</div>
+</header>
+<section class="hero">
+<div class="container">
+<h1>Willow Spence</h1>
+<div class="subtitle">URBAN INDUSTRIAL</div>
+<div class="location">1004 Spence Street, Austin, Texas 78702</div>
+</div>
+</section>
+<div class="feature-text">
+Raw authenticity meets modern comfort. This 16-bedroom industrial loft space showcases exposed elements, concrete aesthetics, and urban edge—a bold retreat in the heart of Austin's vibrant cityscape.
+</div>
+<section class="gallery" id="gallery">
+<div class="carousel-container">
+<img class="carousel-image active" src="" alt="Property">
+<button class="carousel-btn prev" onclick="changeSlide(-1);return false">‹</button>
+<button class="carousel-btn next" onclick="changeSlide(1);return false">›</button>
+<div class="counter"><span id="current">1</span> / <span id="total">62</span></div>
+</div>
+<div class="thumbnails" id="thumbnails"></div>
+</section>
+<section class="features">
+<div class="container">
+<h2>FEATURES</h2>
+<div class="feature-grid">
+<div class="feature-card">
+<span class="feature-icon">▮</span>
+<h3>16 ROOMS</h3>
+<p>Industrial loft-style bedrooms</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">◢</span>
+<h3>RAW DESIGN</h3>
+<p>Exposed elements and textures</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">▣</span>
+<h3>URBAN CORE</h3>
+<p>Central Austin location</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">▧</span>
+<h3>MODERN EDGE</h3>
+<p>Contemporary industrial amenities</p>
 </div>
 </div>
+</div>
+</section>
+<section class="cta">
+<div class="container">
+<h2>BOOK NOW</h2>
+<p style="font-size:1.1rem;color:#aaa;margin-bottom:1rem;font-family:Arial,sans-serif">Experience raw urban luxury</p>
+<a href="#contact" class="cta-btn">GET STARTED</a>
+</div>
+</section>
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+<div class="lightbox-content">
+<img class="lightbox-image" id="lightbox-image" src="" alt="Property">
+</div>
+<button class="lightbox-btn prev" onclick="lightboxChangeSlide(-1)">‹</button>
+<button class="lightbox-btn next" onclick="lightboxChangeSlide(1)">›</button>
+<div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">62</span></div>
+</div>
+<script>
+const images=Array.from({length:62},(_,i)=>`../images/photo_${i+1}_2025-11-02_10-09-51.jpg`);
+let currentIndex=0;
+let lightboxIndex=0;
+const carouselImages=document.querySelectorAll('.carousel-image');
+const thumbnailsContainer=document.getElementById('thumbnails');
+carouselImages[0].src=images[0];
+images.forEach((src,index)=>{
+const thumbnail=document.createElement('img');
+thumbnail.src=src;
+thumbnail.className='thumbnail';
+thumbnail.alt=`Thumbnail ${index+1}`;
+thumbnail.onclick=()=>openLightbox(index);
+thumbnailsContainer.appendChild(thumbnail);
+});
+function updateCarousel(){
+carouselImages.forEach((img,i)=>{
+img.classList.toggle('active',i===0);
+img.src=images[currentIndex];
+});
+document.getElementById('current').textContent=currentIndex+1;
+document.querySelectorAll('.thumbnail').forEach((thumb,i)=>{
+thumb.classList.toggle('active',i===currentIndex);
+});
+}
+function changeSlide(direction){
+currentIndex=(currentIndex+direction+images.length)%images.length;
+updateCarousel();
+}
+function openLightbox(index){
+lightboxIndex=index;
+document.getElementById('lightbox').classList.add('active');
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('active');
+document.body.style.overflow='auto';
+}
+function lightboxChangeSlide(direction){
+lightboxIndex=(lightboxIndex+direction+images.length)%images.length;
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+}
+document.addEventListener('keydown',(e)=>{
+if(document.getElementById('lightbox').classList.contains('active')){
+if(e.key==='ArrowLeft')lightboxChangeSlide(-1);
+if(e.key==='ArrowRight')lightboxChangeSlide(1);
+if(e.key==='Escape')closeLightbox();
+}else{
+if(e.key==='ArrowLeft')changeSlide(-1);
+if(e.key==='ArrowRight')changeSlide(1);
+}
+});
+let touchStartX=0;
+let touchEndX=0;
+document.addEventListener('touchstart',e=>touchStartX=e.changedTouches[0].screenX);
+document.addEventListener('touchend',e=>{
+touchEndX=e.changedTouches[0].screenX;
+if(touchStartX-touchEndX>50)changeSlide(1);
+if(touchEndX-touchStartX>50)changeSlide(-1);
+});
+updateCarousel();
+</script>
 </body>
 </html>

@@ -3,34 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Willow Spence | Style Variation</title>
+<title>Willow Spence Urban Retreat | Luxury Resort</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f5f5f5;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
-.container{background:white;padding:4rem 3rem;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.1);max-width:600px;text-align:center}
-.logo{max-width:200px;margin:0 auto 2rem}
-.logo img{width:100%;height:auto}
-h1{font-size:2rem;margin-bottom:1rem;color:#333}
-p{font-size:1.1rem;color:# 666;margin-bottom:2rem;line-height:1.6}
-.btn{display:inline-block;background:#000;color:white;padding:1rem 3rem;text-decoration:none;border-radius:8px;margin:0.5rem;transition:0.3s}
-.btn:hover{background:#333;transform:translateY(-2px)}
-.btn.secondary{background:#d4af37}
-.btn.secondary:hover{background:#c19b2f}
+body{font-family:'Georgia',serif;background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%);color:#2d5016;line-height:1.7}
+.header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);box-shadow:0 2px 10px rgba(0,100,0,0.1);z-index:100;padding:1.5rem 0}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+.logo-container{text-align:center}
+.logo{max-height:60px;width:auto}
+.hero{padding:4rem 2rem;text-align:center;background:linear-gradient(to bottom,rgba(255,255,255,0.9),rgba(232,245,233,0.9));border-bottom:3px solid #81c784}
+h1{font-size:3.5rem;font-weight:400;letter-spacing:2px;margin-bottom:0.8rem;color:#1b5e20;font-style:italic}
+.subtitle{font-size:1.3rem;font-weight:300;color:#4caf50;margin-bottom:2rem;font-family:'Palatino Linotype',Palatino,serif}
+.location{font-size:1.05rem;color:#66bb6a;font-style:italic}
+.feature-text{max-width:750px;margin:3rem auto;padding:0 2rem;text-align:center;font-size:1.15rem;line-height:1.9;color:#388e3c;background:rgba(255,255,255,0.7);padding:2rem;border-radius:10px;box-shadow:0 4px 15px rgba(0,100,0,0.1)}
+.gallery{padding:3rem 2rem;background:transparent}
+.carousel-container{position:relative;max-width:950px;margin:0 auto 2rem;background:#fff;aspect-ratio:16/10;border-radius:15px;overflow:hidden;box-shadow:0 8px 30px rgba(0,100,0,0.15)}
+.carousel-image{width:100%;height:100%;object-fit:cover;display:none}
+.carousel-image.active{display:block}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(129,199,132,0.95);color:#fff;border:none;padding:1.5rem 1rem;cursor:pointer;font-size:2rem;transition:0.3s;z-index:10;border-radius:50%}
+.carousel-btn:hover{background:#66bb6a;transform:translateY(-50%) scale(1.1);box-shadow:0 4px 15px rgba(102,187,106,0.4)}
+.carousel-btn.prev{left:1.5rem}
+.carousel-btn.next{right:1.5rem}
+.counter{position:absolute;bottom:1.5rem;right:1.5rem;background:rgba(129,199,132,0.95);color:#fff;padding:0.6rem 1.2rem;font-size:0.95rem;border-radius:20px;box-shadow:0 2px 8px rgba(0,100,0,0.2)}
+.thumbnails{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:0.6rem;max-width:950px;margin:0 auto;padding:0 1rem}
+.thumbnail{width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer;opacity:0.6;transition:0.3s;border-radius:10px;border:3px solid transparent}
+.thumbnail:hover,.thumbnail.active{opacity:1;border-color:#81c784;box-shadow:0 4px 12px rgba(129,199,132,0.3)}
+.features{padding:4rem 2rem;background:rgba(255,255,255,0.8)}
+.features h2{font-size:2.8rem;text-align:center;margin-bottom:3rem;font-weight:400;color:#1b5e20;font-style:italic}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2.5rem;max-width:950px;margin:0 auto}
+.feature-card{text-align:center;padding:2rem;background:linear-gradient(135deg,#f1f8e9,#e8f5e9);border-radius:15px;box-shadow:0 4px 15px rgba(0,100,0,0.1)}
+.feature-icon{font-size:2.5rem;margin-bottom:1rem;display:block;color:#66bb6a}
+.feature-card h3{font-size:1.25rem;margin-bottom:0.6rem;font-weight:600;color:#2d5016}
+.feature-card p{color:#558b2f;font-size:0.95rem;line-height:1.6}
+.cta{padding:5rem 2rem;text-align:center;background:linear-gradient(to top,rgba(232,245,233,0.9),rgba(255,255,255,0.9))}
+.cta h2{font-size:2.8rem;margin-bottom:1rem;font-weight:400;color:#1b5e20;font-style:italic}
+.cta-btn{display:inline-block;background:#66bb6a;color:#fff;padding:1.3rem 3.5rem;text-decoration:none;margin-top:1.5rem;font-size:1.15rem;transition:0.3s;border-radius:30px;box-shadow:0 4px 15px rgba(102,187,106,0.3)}
+.cta-btn:hover{background:#4caf50;transform:translateY(-3px);box-shadow:0 6px 25px rgba(76,175,80,0.4)}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(232,245,233,0.98);z-index:1000;backdrop-filter:blur(15px)}
+.lightbox.active{display:block}
+.lightbox-content{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);max-width:90vw;max-height:90vh}
+.lightbox-image{max-width:90vw;max-height:90vh;object-fit:contain;display:block;border-radius:10px;box-shadow:0 8px 40px rgba(0,100,0,0.2)}
+.lightbox-close{position:fixed;top:2rem;right:2rem;background:#66bb6a;color:#fff;border:none;padding:1rem 1.5rem;cursor:pointer;font-size:1.5rem;z-index:1001;border-radius:25px;box-shadow:0 4px 15px rgba(102,187,106,0.3)}
+.lightbox-close:hover{background:#4caf50;transform:scale(1.05)}
+.lightbox-btn{position:fixed;top:50%;transform:translateY(-50%);background:#66bb6a;color:#fff;border:none;padding:2rem 1.5rem;cursor:pointer;font-size:2rem;z-index:1001;border-radius:50%;box-shadow:0 4px 15px rgba(102,187,106,0.3)}
+.lightbox-btn:hover{background:#4caf50;transform:translateY(-50%) scale(1.1)}
+.lightbox-btn.prev{left:2rem}
+.lightbox-btn.next{right:2rem}
+.lightbox-counter{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#66bb6a;color:#fff;padding:1rem 2rem;font-size:1.1rem;z-index:1001;border-radius:25px;box-shadow:0 4px 15px rgba(102,187,106,0.3)}
+@media(max-width:768px){
+h1{font-size:2.3rem}
+.subtitle{font-size:1.1rem}
+.carousel-btn{padding:1.2rem 0.8rem;font-size:1.5rem}
+.carousel-btn.prev{left:1rem}
+.carousel-btn.next{right:1rem}
+.thumbnails{grid-template-columns:repeat(auto-fill,minmax(75px,1fr))}
+.features h2,.cta h2{font-size:2rem}
+}
 </style>
 </head>
 <body>
+<header class="header">
 <div class="container">
-<div class="logo"><img src="../logo.jpg" alt="Willow Spence"></div>
-<h1>Design Variation Coming Soon</h1>
-<p>This style variation is currently in development. Check out our other beautiful designs in the meantime!</p>
-<a href="airbnb-classic.html" class="btn">Airbnb Classic</a>
-<a href="minimalist.html" class="btn">Minimalist</a>
-<a href="dark-luxury.html" class="btn secondary">Dark Luxury</a>
-<a href="bright-airy.html" class="btn">Bright & Airy</a>
-<a href="modern-bold.html" class="btn">Modern Bold</a>
-<div style="margin-top:2rem">
-<a href="index.html" style="color:#666;text-decoration:none">← Back to All Styles</a>
+<div class="logo-container"><img src="../logo.jpg" alt="Willow Spence" class="logo"></div>
+</div>
+</header>
+<section class="hero">
+<div class="container">
+<h1>Willow Spence</h1>
+<div class="subtitle">Luxury Urban Resort</div>
+<div class="location">1004 Spence Street, Austin, Texas 78702</div>
+</div>
+</section>
+<div class="feature-text">
+Escape to tranquility in the heart of the city. This 16-bedroom luxury retreat offers resort-style relaxation with lush surroundings, sophisticated amenities, and a serene atmosphere that melts away the urban rush.
+</div>
+<section class="gallery" id="gallery">
+<div class="carousel-container">
+<img class="carousel-image active" src="" alt="Property">
+<button class="carousel-btn prev" onclick="changeSlide(-1);return false">‹</button>
+<button class="carousel-btn next" onclick="changeSlide(1);return false">›</button>
+<div class="counter"><span id="current">1</span> / <span id="total">62</span></div>
+</div>
+<div class="thumbnails" id="thumbnails"></div>
+</section>
+<section class="features">
+<div class="container">
+<h2>Resort Features</h2>
+<div class="feature-grid">
+<div class="feature-card">
+<span class="feature-icon">🌿</span>
+<h3>16 Guest Suites</h3>
+<p>Luxuriously appointed resort-style bedrooms</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">✨</span>
+<h3>Premium Amenities</h3>
+<p>Full resort experience in urban setting</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">🌺</span>
+<h3>Tranquil Spaces</h3>
+<p>Peaceful retreat from city life</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">🏖️</span>
+<h3>Vacation Vibes</h3>
+<p>Relaxation-focused Austin location</p>
 </div>
 </div>
+</div>
+</section>
+<section class="cta">
+<div class="container">
+<h2>Reserve Your Retreat</h2>
+<p style="font-size:1.15rem;color:#558b2f;margin-bottom:1rem">Experience resort luxury in the city</p>
+<a href="#contact" class="cta-btn">Book Your Escape</a>
+</div>
+</section>
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+<div class="lightbox-content">
+<img class="lightbox-image" id="lightbox-image" src="" alt="Property">
+</div>
+<button class="lightbox-btn prev" onclick="lightboxChangeSlide(-1)">‹</button>
+<button class="lightbox-btn next" onclick="lightboxChangeSlide(1)">›</button>
+<div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">62</span></div>
+</div>
+<script>
+const images=Array.from({length:62},(_,i)=>`../images/photo_${i+1}_2025-11-02_10-09-51.jpg`);
+let currentIndex=0;
+let lightboxIndex=0;
+const carouselImages=document.querySelectorAll('.carousel-image');
+const thumbnailsContainer=document.getElementById('thumbnails');
+carouselImages[0].src=images[0];
+images.forEach((src,index)=>{
+const thumbnail=document.createElement('img');
+thumbnail.src=src;
+thumbnail.className='thumbnail';
+thumbnail.alt=`Thumbnail ${index+1}`;
+thumbnail.onclick=()=>openLightbox(index);
+thumbnailsContainer.appendChild(thumbnail);
+});
+function updateCarousel(){
+carouselImages.forEach((img,i)=>{
+img.classList.toggle('active',i===0);
+img.src=images[currentIndex];
+});
+document.getElementById('current').textContent=currentIndex+1;
+document.querySelectorAll('.thumbnail').forEach((thumb,i)=>{
+thumb.classList.toggle('active',i===currentIndex);
+});
+}
+function changeSlide(direction){
+currentIndex=(currentIndex+direction+images.length)%images.length;
+updateCarousel();
+}
+function openLightbox(index){
+lightboxIndex=index;
+document.getElementById('lightbox').classList.add('active');
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('active');
+document.body.style.overflow='auto';
+}
+function lightboxChangeSlide(direction){
+lightboxIndex=(lightboxIndex+direction+images.length)%images.length;
+document.getElementById('lightbox-image').src=images[lightboxIndex];
+document.getElementById('lightbox-current').textContent=lightboxIndex+1;
+}
+document.addEventListener('keydown',(e)=>{
+if(document.getElementById('lightbox').classList.contains('active')){
+if(e.key==='ArrowLeft')lightboxChangeSlide(-1);
+if(e.key==='ArrowRight')lightboxChangeSlide(1);
+if(e.key==='Escape')closeLightbox();
+}else{
+if(e.key==='ArrowLeft')changeSlide(-1);
+if(e.key==='ArrowRight')changeSlide(1);
+}
+});
+let touchStartX=0;
+let touchEndX=0;
+document.addEventListener('touchstart',e=>touchStartX=e.changedTouches[0].screenX);
+document.addEventListener('touchend',e=>{
+touchEndX=e.changedTouches[0].screenX;
+if(touchStartX-touchEndX>50)changeSlide(1);
+if(touchEndX-touchStartX>50)changeSlide(-1);
+});
+updateCarousel();
+</script>
 </body>
 </html>
