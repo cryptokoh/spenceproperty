@@ -18,13 +18,21 @@
 --capital-rgb:57,181,74;
 }
 body{font-family:'Archivo',sans-serif;background:#fff;color:#333;line-height:1.6}
-.header{position:sticky;top:0;background:#fff;border-bottom:3px solid var(--nexus-blue);z-index:100;padding:1.5rem 0;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.loading-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#000,var(--nexus-blue));display:flex;align-items:center;justify-content:center;z-index:9999;animation:fadeOut 1s 2.5s forwards}
+.loading-content{text-align:center;animation:fadeInUp 1s ease-out}
+.loading-logo{max-width:300px;margin-bottom:2rem;opacity:0;animation:fadeIn 0.8s 0.3s forwards}
+.loading-text{font-family:'Archivo',sans-serif;font-size:3rem;font-weight:700;color:#fff;margin-bottom:1rem;opacity:0;animation:fadeIn 0.8s 0.8s forwards}
+.loading-subtext{font-family:'Archivo',sans-serif;font-size:1.3rem;color:var(--capital-green);opacity:0;animation:fadeIn 0.8s 1.3s forwards}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.header{position:sticky;top:0;background:#000;border-bottom:3px solid var(--capital-green);z-index:100;padding:1.5rem 0;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
 .container{max-width:1400px;margin:0 auto;padding:0 2rem}
 .header-content{display:flex;align-items:center;justify-content:space-between}
-.logo{max-height:60px;width:auto}
+.logo{max-height:80px;width:auto;filter:brightness(1.1)}
 .header-info{text-align:right}
-.header-title{font-family:'Archivo',sans-serif;font-size:1.1rem;font-weight:600;color:var(--nexus-blue);margin-bottom:0.3rem}
-.header-subtitle{font-size:0.9rem;color:var(--grey-line)}
+.header-title{font-family:'Archivo',sans-serif;font-size:1.1rem;font-weight:600;color:var(--capital-green);margin-bottom:0.3rem}
+.header-subtitle{font-size:0.9rem;color:rgba(255,255,255,0.7)}
 .hero{background:linear-gradient(135deg,rgba(37,52,113,0.95),rgba(37,52,113,0.85)),url('images/photo_1_2025-11-02_10-09-51.jpg');background-size:cover;background-position:center;color:#fff;padding:6rem 2rem;text-align:center;position:relative}
 .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--nexus-blue) 0%,var(--capital-green) 100%)}
 .hero-badge{display:inline-block;background:rgba(57,181,74,0.2);border:2px solid var(--capital-green);color:var(--capital-green);padding:0.5rem 1.5rem;border-radius:25px;font-size:0.85rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:2px;font-family:'Ailerons','Archivo',sans-serif;text-transform:uppercase}
@@ -94,10 +102,23 @@ h1{font-size:2.5rem}
 .features-grid{grid-template-columns:1fr 1fr}
 .details-grid{grid-template-columns:1fr}
 .gallery-grid{grid-template-columns:1fr}
+.loading-text{font-size:2rem}
+.loading-subtext{font-size:1rem}
+.loading-logo{max-width:200px}
+.logo{max-height:60px}
+.header-content{flex-direction:column;gap:1rem;text-align:center}
+.header-info{text-align:center}
 }
 </style>
 </head>
 <body>
+<div class="loading-screen">
+<div class="loading-content">
+<img src="logo.jpg" alt="Willow Spence" class="loading-logo">
+<div class="loading-text">Welcome to Willow Spence</div>
+<div class="loading-subtext">Historic Urban Retreat • Est. 1906</div>
+</div>
+</div>
 <header class="header">
 <div class="container">
 <div class="header-content">
